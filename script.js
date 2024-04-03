@@ -269,13 +269,13 @@ $(document).ready(function () {
       const genre = $(this).data("genre");
       modalTitle.text(title);
       movieDetails.html(`
-        <div class="d-flex gap-2">
-        <div>
-        <p><b>Year:</b> ${year}</p>
-        <p><b>Description:</b> ${description}</p>
-        <p><b>Genre:</b> ${genre}</p>
-        </div>
-        <img src="${image}" class="card-img-top img-fluid rounded " alt="${title}" style="width:200px;">
+        <div class="d-lg-flex gap-2">
+        <img src="${image}" class="img-fluid rounded" alt="${title}" style="width:150px;">
+         <div>
+          <p><b>Year:</b> ${year}</p>
+          <p><b>Description:</b> ${description}</p>
+          <p><b>Genre:</b> ${genre}</p>
+         </div>         
         </div>
       `);
     });

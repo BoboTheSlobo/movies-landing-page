@@ -4,14 +4,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/logo-popcorn.png" type="image/x-icon">
     <!-- Bootstrap link and bootstrap icons link -->
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <title>Awesome Movies</title>
 </head>
 
 <body>
+    <!-- navbar start -->
+    <nav class="navbar navbar-expand-lg fixed-top" aria-label="Offcanvas navbar large">
+        <div class="container">
+            <div class="d-flex align-items-center">
+                <img class="me-1 img-fluid" src="./assets/logo-popcorn.png" alt="popcorn-logo" width="32px">
+                <h1 class="display-6 m-0">Awesome Movies</h1>
+            </div>
+            <button class="navbar-toggler border-0 p-0 pt-1" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
+                <i class="bi bi-list fs-1"></i>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar2"
+                aria-labelledby="offcanvasNavbar2Label">
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 fs-5 fw-light">
+                        <!-- Navbar Links -->
+                        <li class="nav-item">
+                            <a class="nav-link active p-3 text-white " aria-current="page" href="#"
+                                onclick="closeOffcanvasNavbar()">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-3 text-white" href="#movies-section"
+                                onclick="closeOffcanvasNavbar()">Movies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-3 text-white" href="#random-fact"
+                                onclick="closeOffcanvasNavbar()">Random fact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- navbar end -->
+    <!-- landing page start -->
+    <div class="landing_page px-4 pt-5 mt-5 text-center">
+        <h2 class="display-6 mt-5">Welcome to <b>Awesome Movies</b>!</h2>
+        <div class="col-lg-6  mx-auto">
+            <p class="lead mb-4">
+                Discover a curated collection of films for every taste. Join our community for an
+                unforgettable movie-watching experience.</p>
+        </div>
+
+        <div class="container px-5">
+            <img src="./assets/man-eating-popcorn.png" class="img-fluid" width="700px" alt="Example image"
+                loading="lazy">
+        </div>
+    </div>
+
+    <!-- features -->
+    <div class="container px-4 py-3">
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3 text-center">
+            <div class="feature col">
+                <h3>
+                    Fresh Picks <i class="bi bi-1-square ms-2"></i>
+                </h3>
+            </div>
+            <div class="feature col">
+                <h3>
+                    User-Driven <i class="bi bi-trophy ms-2"></i>
+                </h3>
+            </div>
+            <div class="feature col">
+                <h3>
+                    Visual Delight <i class="bi bi-eye ms-2"></i>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <!-- landing page end -->
 
     <!-- Bootstrap and jQuery links -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

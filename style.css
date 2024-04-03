@@ -1,0 +1,38 @@
+:root {
+  --color-black: #000000;
+  --light-text-color: #ffff;
+  --light-red: #a34343;
+}
+* {
+  color: var(--light-text-color);
+}
+body {
+  background-color: var(--color-black) !important;
+}
+.navbar,
+.offcanvas,
+.landing_page {
+  background-color: var(--light-red) !important;
+}
+.navbar a {
+  position: relative;
+}
+.navbar a:before {
+  content: "";
+  width: 0%;
+  height: 2px;
+  background-color: var(--light-text-color);
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  transition: ease-in-out 0.3s;
+}
+.navbar a:hover::before {
+  width: 100%;
+}
+.navbar-hidden {
+  display: none;
+}
+.feature i {
+  color: var(--light-red);
+}

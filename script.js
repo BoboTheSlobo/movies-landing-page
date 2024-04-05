@@ -292,3 +292,26 @@ $(document).ready(function () {
     displayMovies(selectedGenre);
   });
 });
+
+// fetch random quote
+$(document).ready(function () {
+  $("#fetchButton").click(function () {
+    var randomString = (Math.random() + 1).toString(36).substring(7);
+    $.ajax({
+      url:
+        "https://corsproxy.io/?https%3A%2F%2Fquoteapi.pythonanywhere.com%2Frandom" +
+        "?" +
+        randomString,
+      type: "GET",
+
+      success: function (data) {
+        var quoteObj = data.Quotes[0];
+        var quote = quoteObj.quote;
+        $("#quote").text(`"${quote}"`);
+      },
+      error: function (error) {
+        console.error("Error fetching quote:", error);
+      },
+    });
+  });
+});

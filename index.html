@@ -11,7 +11,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <title>Awesome Movies</title>
+    <title>Popcorn Time</title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
         <div class="container">
             <div class="d-flex align-items-center">
                 <img class="me-1 img-fluid" src="./assets/logo-popcorn.png" alt="popcorn-logo" width="32px">
-                <h1 class="display-6 m-0">Awesome Movies</h1>
+                <h1 class="display-6 m-0">Popcorn Time</h1>
             </div>
             <button class="navbar-toggler border-0 p-0 pt-1" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
@@ -44,8 +44,8 @@
                                 onclick="closeOffcanvasNavbar()">Movies</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-3 text-white" href="#random-fact"
-                                onclick="closeOffcanvasNavbar()">Random fact</a>
+                            <a class="nav-link p-3 text-white" href="#random-movie-quote"
+                                onclick="closeOffcanvasNavbar()">Random Movie Quote</a>
                         </li>
                     </ul>
                 </div>
@@ -55,7 +55,7 @@
     <!-- navbar end -->
     <!-- landing page start -->
     <div class="landing_page px-4 pt-5 mt-5 text-center">
-        <h2 class="display-6 mt-5">Welcome to <b>Awesome Movies</b>!</h2>
+        <h2 class="display-6 mt-5">Welcome to <b>Popcorn Time</b>!</h2>
         <div class="col-lg-6  mx-auto">
             <p class="lead mb-4">
                 Discover a curated collection of films for every taste. Join our community for an
@@ -72,7 +72,7 @@
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3 text-center">
             <div class="feature col-md-4">
                 <h3>
-                    Fresh Picks <i class="bi bi-1-square ms-2"></i>
+                    Best Picks <i class="bi bi-1-square ms-2"></i>
                 </h3>
             </div>
             <div class="feature col-md-4">
@@ -115,7 +115,7 @@
 
         </div>
 
-        <div id="movies" class="container align-items-center ">
+        <div id="movies" class="container align-items-center pb-5">
             <div class="row">
                 <!-- movies will be added here -->
             </div>
@@ -140,7 +140,75 @@
         </div>
     </div>
     <!-- movies section end -->
+    <!-- random movie quote section -->
+    <div id="random-movie-quote">
+        <div class="container col-xxl-8 px-4 pt-5">
+            <div class="row flex-lg-row-reverse align-items-center g-5 pt-5">
 
+                <div class="col-lg-6">
+                    <h2 class="display-6 fw-light mb-3">Random Movie Quote</h2>
+                    <p class="lead">Are you a movie enthusiast? If so, grab a random movie quote and see if you can
+                        identify
+                        which movie it's from!</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <button id="fetchButton" class="px-5 py-2 fs-4 rounded" data-bs-toggle="modal"
+                            data-bs-target="#quoteModal">Get Quote</button>
+                    </div>
+                </div>
+                <div class="col-10 col-sm-8 col-lg-6">
+                    <img src="./assets/girl-eating-popcorn.png" class="d-block mx-lg-auto img-fluid"
+                        alt="Bootstrap Themes" width="400" height="500" loading="lazy">
+                </div>
+            </div>
+            <div class="modal fade" id="quoteModal" tabindex="-1" aria-labelledby="quoteModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header border-0 p-0">
+                            <button type="button" class="ms-auto border-0 bg-transparent pt-2 pe-3"
+                                data-bs-dismiss="modal" aria-label="Close">
+                                <i class="bi bi-x"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body pt-0" id="movieDetails">
+                            <p id="quote" class="text-center text-white lead"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- random movie quote section end -->
+    <!-- footer -->
+    <div class="container-fluid footer pt-5">
+        <footer class=" container d-flex flex-wrap justify-content-between align-items-center py-3">
+            <p class="col-md-4 mb-0 text-white fw-light">© 2024 Popcorn Time, Inc</p>
+            <img class="me-1 img-fluid" src="./assets/logo-popcorn.png" alt="popcorn-logo" width="32px">
+            <ul class="nav col-md-4 justify-content-end">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><i
+                            class="bi bi-envelope"></i></a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><i
+                            class="bi bi-youtube"></i></a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><i
+                            class="bi bi-instagram"></i></a></li>
+
+            </ul>
+            <div class="modal fade" id="FAQs" tabindex="-1" aria-labelledby="quoteModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header border-0 p-0">
+                            <button type="button" class="ms-auto border-0 bg-transparent pt-2 pe-3"
+                                data-bs-dismiss="modal" aria-label="Close">
+                                <i class="bi bi-x"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body pt-0" id="movieDetails">
+                            <p id="quote" class="text-center text-white lead"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
     <!-- Bootstrap and jQuery links -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -148,6 +216,7 @@
         crossorigin="anonymous"></script>
     <!-- script file -->
     <script src="script.js"></script>
+
 </body>
 
 </html>

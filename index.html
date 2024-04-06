@@ -23,18 +23,17 @@
                 <h1 class="display-6 m-0">Popcorn Time</h1>
             </div>
             <button class="navbar-toggler border-0 p-0 pt-1" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
+                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <i class="bi bi-list fs-1"></i>
             </button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar2"
-                aria-labelledby="offcanvasNavbar2Label">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
                         aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 fs-5 fw-light">
-                        <!-- Navbar Links -->
                         <li class="nav-item">
                             <a class="nav-link active p-3 text-white " aria-current="page" href="#"
                                 onclick="closeOffcanvasNavbar()">Home</a>
@@ -53,16 +52,15 @@
         </div>
     </nav>
     <!-- navbar end -->
-    <!-- landing page start -->
+    <!-- landing page -->
     <div class="landing_page px-4 pt-5 mt-5 text-center">
-        <h2 class="display-6 mt-5">Welcome to <b>Popcorn Time</b>!</h2>
-        <div class="col-lg-6  mx-auto">
-            <p class="lead mb-4">
-                Discover a curated collection of films for every taste. Join our community for an
-                unforgettable movie-watching experience.</p>
-        </div>
-
-        <div class="container px-5">
+        <div class="container">
+            <h2 class="display-6 mt-5">Welcome to <b>Popcorn Time</b>!</h2>
+            <div class="col-lg-6  mx-auto">
+                <p class="lead mb-4">
+                    Discover a curated collection of films for every taste. Join our community for an
+                    unforgettable movie-watching experience.</p>
+            </div>
             <img src="./assets/man-eating-popcorn.png" class="img-fluid" width="700px" alt="Example image"
                 loading="lazy">
         </div>
@@ -87,17 +85,17 @@
             </div>
         </div>
     </div>
-    <!-- landing page end -->
 
-    <!-- movies section start -->
+    <!-- movies section -->
     <div id="movies-section" class="py-5">
         <div class="container px-4 py-5">
             <h2 class="display-6 fw-light">Movies</h2>
-            <!-- dropdown to filter movies -->
-            <label class="lead" for="button">Filter Movies: </label>
-            <button class="btn btn-secondary dropdown-toggle btn-dark bg-black border-0" name="button" type="button"
+            <label class="lead mb-3" for="filter-btn">Filter & Add Movies: </label>
+            <button class="btn btn-secondary dropdown-toggle btn-dark bg-black border-0" name="filter-btn" type="button"
                 id="genreDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             </button>
+            <button id="addMovieButton" class="btn btn-secondary btn-dark bg-black border-0 " data-bs-toggle="modal"
+                data-bs-target="#addMovieModal">Add Movie</button>
             <div class="dropdown">
                 <ul class="dropdown-menu bg-black" aria-labelledby="genreDropdown">
                     <li><a class="dropdown-item genre-filter" data-genre="All">All</a></li>
@@ -110,8 +108,52 @@
                 </ul>
             </div>
 
-            <!-- Container for displaying movies -->
-            <div id="moviesContainer"></div>
+            <div class="modal fade" id="addMovieModal" tabindex="-1" aria-labelledby="addMovieLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header border-0">
+                            <h5 id="addMovieLabel">Add Movie:</h5>
+                            <button type="button" class="ms-auto border-0 bg-transparent" data-bs-dismiss="modal"
+                                aria-label="Close">
+                                <i class="bi bi-x"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <form id="addMovieForm">
+                                <div class="mb-3">
+                                    <label for="titleInput" class="form-label">Title</label>
+                                    <input type="text" class="form-control" id="titleInput" required maxlength="250">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="imageInput" class="form-label">Image URL</label>
+                                    <input type="url" class="form-control" id="imageInput" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="yearInput" class="form-label">Year</label>
+                                    <input type="text" class="form-control" id="yearInput" required pattern="\d{4}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="descriptionInput" class="form-label">Description</label>
+                                    <textarea class="form-control" id="descriptionInput" required maxlength="250"
+                                        style="resize:none;"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="genreInput" class="form-label">Genre</label>
+                                    <select class="form-select text-black" id="genreInput" required>
+                                        <option class="text-black" value="">Select Genre</option>
+                                        <option class="text-black" value="Comedy">Comedy</option>
+                                        <option class="text-black" value="Action">Action</option>
+                                        <option class="text-black" value="Horror">Horror</option>
+                                        <option class="text-black" value="Science Fiction">Science Fiction</option>
+                                        <option class="text-black" value="Documentary">Documentary</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn bg-black">Add Movie</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
@@ -120,13 +162,11 @@
                 <!-- movies will be added here -->
             </div>
         </div>
-        <!-- modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header border-0">
                         <h5 class="modal-title" id="exampleModalLabel"></h5>
-
                         <button type="button" class="ms-auto border-0 bg-transparent" data-bs-dismiss="modal"
                             aria-label="Close">
                             <i class="bi bi-x"></i>
@@ -140,6 +180,7 @@
         </div>
     </div>
     <!-- movies section end -->
+
     <!-- random movie quote section -->
     <div id="random-movie-quote">
         <div class="container col-xxl-8 px-4 pt-5">
@@ -169,7 +210,7 @@
                                 <i class="bi bi-x"></i>
                             </button>
                         </div>
-                        <div class="modal-body pt-0" id="movieDetails">
+                        <div class="modal-body pt-0">
                             <p id="quote" class="text-center text-white lead"></p>
                         </div>
                     </div>
@@ -178,6 +219,7 @@
         </div>
     </div>
     <!-- random movie quote section end -->
+
     <!-- footer -->
     <div class="container-fluid footer pt-5">
         <footer class=" container d-flex flex-wrap justify-content-between align-items-center py-3">

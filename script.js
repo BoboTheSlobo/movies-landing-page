@@ -1,6 +1,5 @@
-// Function to close the offCanvasNavbar when a link is clicked
 function closeOffcanvasNavbar() {
-  let offcanvasNavbar = document.getElementById("offcanvasNavbar2");
+  let offcanvasNavbar = document.getElementById("offcanvasNavbar");
   let offcanvasNavbarInstance =
     bootstrap.Offcanvas.getInstance(offcanvasNavbar);
   if (offcanvasNavbarInstance) {
@@ -234,7 +233,6 @@ const movies = [
 ];
 
 $(document).ready(function () {
-  // create movie cards
   function generateMovieCard(movie) {
     return `
       <div class="col-md-6 mb-4 col-lg-3 d-flex justify-content-center movie" data-genre="${movie.genre}">
@@ -251,14 +249,12 @@ $(document).ready(function () {
   // function to filter movies based on the selected genre
   function displayMovies(genre) {
     const moviesContainer = $("#movies .row");
-    moviesContainer.empty(); // clear existing movies
+    moviesContainer.empty();
     movies.forEach((movie) => {
-      // If the genre is "All" or it matches the selected genre display the movie with that genre
       if (genre === "All" || movie.genre === genre) {
         moviesContainer.append(generateMovieCard(movie));
       }
     });
-    // display the movie details in the modal
     $(".view-details-btn").click(function () {
       const modalTitle = $(".modal-title");
       const movieDetails = $("#movieDetails");
@@ -279,11 +275,8 @@ $(document).ready(function () {
         </div>
       `);
     });
-    // update the dropdown button text to display selected genre
     $("#genreDropdown").text(genre);
   }
-
-  // display all movies by default
   displayMovies("All");
 
   // filter the movies on selected genre
@@ -291,6 +284,90 @@ $(document).ready(function () {
     const selectedGenre = $(this).data("genre");
     displayMovies(selectedGenre);
   });
+});
+
+// add movie function
+$(document).ready(function () {
+  $("#addMovieForm").submit(function (event) {
+    event.preventDefault();
+    const title = $("#titleInput").val().trim();
+    const image = $("#imageInput").val().trim();
+    const year = $("#yearInput").val().trim();
+    const description = $("#descriptionInput").val().trim();
+    const genre = $("#genreInput").val();
+    if (!validateInputs(title, image, year, description, genre)) {
+      return;
+    }
+    addMovie(title, image, year, description, genre);
+    alert("Movie poster added successfully, scroll down to see it!");
+    $("#addMovieForm").trigger("reset");
+  });
+
+  function validateInputs(title, image, year, description, genre) {
+    if (title.length === 0 || title.length > 250) {
+      alert("Please enter a valid title (max 250 characters).");
+      return false;
+    }
+    if (image.length === 0) {
+      alert("Please enter a valid image URL.");
+      return false;
+    }
+    if (!/^\d{4}$/.test(year)) {
+      alert("Please enter a valid year.");
+      return false;
+    }
+
+    if (description.length === 0 || description.length > 500) {
+      alert("Please enter a valid description (max 500 characters).");
+      return false;
+    }
+
+    if (genre.length === 0) {
+      alert("Please select a genre.");
+      return false;
+    }
+
+    return true;
+  }
+
+  function addMovie(title, image, year, description, genre) {
+    const movieCardHtml = `
+          <div class="col-md-6 mb-4 col-lg-3 d-flex justify-content-center movie" data-genre="${genre}">
+              <div class="card border-0 rounded" style="width: 250px;">
+                  <img src="${image}" class="card-img-top img-fluid rounded" alt="${title}" style="width:250px; height:375px; object-fit: cover;">
+                  <div class="card-img-overlay d-flex flex-column justify-content-center rounded">
+                      <button type="button" class="btn btn-dark view-details-btn border-0" data-bs-toggle="modal" data-bs-target="#exampleModal" data-title="${title}" data-year="${year}" data-description="${description}" data-genre="${genre}" data-image="${image}">View Details</button>
+                  </div>
+              </div>
+          </div>
+      `;
+    $("#movies .row").append(movieCardHtml);
+  }
+
+  $(document).on("click", ".view-details-btn", function () {
+    const title = $(this).data("title");
+    const image = $(this).data("image");
+    const year = $(this).data("year");
+    const description = $(this).data("description");
+    const genre = $(this).data("genre");
+    displayMovieDetails(title, image, year, description, genre);
+  });
+
+  function displayMovieDetails(title, image, year, description, genre) {
+    const modalTitle = $(".modal-title");
+    const movieDetails = $("#movieDetails");
+    modalTitle.text(title);
+    movieDetails.html(`
+          <div class="d-lg-flex gap-2">
+              <img src="${image}" class="img-fluid rounded" alt="${title}" style="width:150px;">
+              <div>
+                  <p><b>Year:</b> ${year}</p>
+                  <p><b>Description:</b> ${description}</p>
+                  <p><b>Genre:</b> ${genre}</p>
+              </div>
+          </div>
+      `);
+  }
 });
 
 // fetch random quote
